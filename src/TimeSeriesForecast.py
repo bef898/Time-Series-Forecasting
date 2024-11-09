@@ -164,6 +164,17 @@ class TimeSeriesForecast:
         plt.title('Forecast vs Actual')
         plt.legend()
         plt.show()
-        
+    def save_lstm_model(model, filename='lstm_model.h5'):
+        """Save the LSTM model to a file."""
+        model.save(filename)
+        print(f"LSTM model saved to {filename}")
+
+    def load_lstm_model(filename='lstm_model.h5'):
+        """Load the LSTM model from a file."""
+        from tensorflow.keras.models import load_model
+        model = load_model(filename)
+        print(f"LSTM model loaded from {filename}")
+        return model
+    
 
 
