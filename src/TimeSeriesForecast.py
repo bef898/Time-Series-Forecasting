@@ -34,7 +34,9 @@ class TimeSeriesForecast:
         """Train an ARIMA model."""
         self.model = ARIMA(self.train_data, order=order)
         self.model = self.model.fit()
+        model = self.model 
         print("ARIMA model trained successfully.")
+        return model
     
     def forecast_arima(self):
         """Forecast using the trained ARIMA model."""
