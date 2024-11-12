@@ -26,6 +26,9 @@ class TimeSeriesForecast:
         self.train_data = self.data[:split_index]
         self.test_data = self.data[split_index:]
         print(f"Data split into {len(self.train_data)} training samples and {len(self.test_data)} testing samples.")
+        train_data= self.train_data,
+        test_data= self.test_data
+        return train_data,test_data
 
     def train_arima(self, order=(1, 1, 1)):
         """Train an ARIMA model."""
@@ -171,7 +174,7 @@ class TimeSeriesForecast:
         self.model.save(filename)
         print(f"LSTM model saved to {filename}")
 
-    def load_lstm_model(filename='lstm_model.h5'):
+    def load_lstm_model(filename='lstm_model.keras'):
         """Load the LSTM model from a file."""
         from tensorflow.keras.models import load_model
         model = load_model(filename)
