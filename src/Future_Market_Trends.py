@@ -60,13 +60,6 @@ class FutureMarketForecast:
 
         # Plot forecasted data
         plt.plot(self.forecast_df.index, self.forecast_df['Forecast'], label='Forecasted Price', color='orange')
-
-        # Commenting out confidence interval plotting for LSTM (remove if not applicable)
-        # plt.fill_between(self.forecast_df.index, 
-        #                  self.forecast_df['Lower CI'], 
-        #                  self.forecast_df['Upper CI'], 
-        #                  color='gray', alpha=0.3, label='Confidence Interval')
-
         plt.xlabel('Date')
         plt.ylabel('Stock Price')
         plt.title('Tesla Stock Price Forecast')
