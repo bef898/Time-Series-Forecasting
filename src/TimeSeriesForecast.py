@@ -164,9 +164,11 @@ class TimeSeriesForecast:
         plt.title('Forecast vs Actual')
         plt.legend()
         plt.show()
-    def save_lstm_model(model, filename='lstm_model.h5'):
+    def save_lstm_model(self, filename='lstm_model.keras'):
         """Save the LSTM model to a file."""
-        model.save(filename)
+        if not self.model:
+            raise Exception("No trained LSTM model found. Train the model first.")
+        self.model.save(filename)
         print(f"LSTM model saved to {filename}")
 
     def load_lstm_model(filename='lstm_model.h5'):
