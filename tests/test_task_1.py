@@ -1,6 +1,11 @@
 import unittest
 import pandas as pd
-from src.task1_preprocess import load_and_clean_data  # Example function
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from src.data_processor import FinancialDataAnalysis
+
+financial_data_analysis = FinancialDataAnalysis()
 
 class TestTask1Preprocess(unittest.TestCase):
     def setUp(self):
@@ -11,7 +16,7 @@ class TestTask1Preprocess(unittest.TestCase):
 
     def test_load_and_clean_data(self):
         """Test loading and cleaning data."""
-        data = load_and_clean_data(self.tickers, self.start_date, self.end_date)
+        data = financial_data_analysis.load_historical_data(self.tickers, self.start_date, self.end_date)
         self.assertIsInstance(data, pd.DataFrame)
         self.assertEqual(len(data.columns), len(self.tickers))  # Check number of columns
         self.assertFalse(data.isnull().values.any())  # Ensure no missing values
